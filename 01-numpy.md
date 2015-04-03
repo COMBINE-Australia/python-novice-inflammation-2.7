@@ -32,8 +32,7 @@ import numpy
 
 Importing a library is like getting a piece of lab equipment out of a storage locker
 and setting it up on the bench.
-Once it's done,
-we can ask the library to read our data file for us:
+Once it's done, we can ask the library to read our data file for us:
 
 ~~~ {.python}
 numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
