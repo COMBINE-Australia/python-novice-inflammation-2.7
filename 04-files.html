@@ -83,8 +83,8 @@
  &#39;data/inflammation-10.csv&#39;,
  &#39;data/inflammation-11.csv&#39;,
  &#39;data/inflammation-12.csv&#39;]</code></pre>
-<p>which means we can loop over it to do something with each filename in turn. In our case, the &quot;something&quot; we want is the code that generates those plots of our inflammation data. Let's test it by analyzing the first three files in the list:</p>
-<pre class="sourceCode python"><code class="sourceCode python">filenames = <span class="dt">sorted</span>(glob.glob(<span class="st">&#39;data/*.csv&#39;</span>))
+<p>We can now generate plots of the inflammation data by looping over a list of their filenames. Let's do this for the first three inflammation CSV files:</p>
+<pre class="sourceCode python"><code class="sourceCode python">filenames = <span class="dt">sorted</span>(glob.glob(<span class="st">&#39;data/inflammation-*.csv&#39;</span>))
 filenames = filenames[:<span class="dv">3</span>]
 <span class="kw">for</span> f in filenames:
     <span class="dt">print</span> f
@@ -107,6 +107,7 @@ filenames = filenames[:<span class="dv">3</span>]
 
     fig.tight_layout()
     plt.show(fig)</code></pre>
+<p>which produces the following:</p>
 <pre class="output"><code>inflammation-01.csv</code></pre>
 <p><img src="fig/03-loop_49_1.png" alt="Analysis of inflammation-01.csv" /><br /></p>
 <pre class="output"><code>inflammation-02.csv</code></pre>
