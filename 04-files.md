@@ -16,29 +16,51 @@ The only thing that's missing is a library with a rather unpleasant name:
 import glob
 ~~~
 
-The `glob` library contains a single function, also called `glob`,
-that finds files whose names match a pattern.
-We provide those patterns as strings:
-the character `*` matches zero or more characters,
-while `?` matches any one character.
-We can use this to get the names of all the IPython Notebooks we have created so far:
+The `glob` library contains a single function, also called `glob`, that finds
+files whose names match a pattern. We provide those patterns as strings: the
+character `*` matches zero or more characters, while `?` matches any one
+character.
+
+We can use `glob` to get the names of all our CSV files:
 
 ~~~ {.python}
-print glob.glob('*.ipynb')
+print glob.glob('data/*.csv')
 ~~~
 
 ~~~ {.output}
-['01-numpy.ipynb', '02-func.ipynb', '03-loop.ipynb', '04-cond.ipynb', '05-defensive.ipynb', '06-cmdline.ipynb', 'spatial-intro.ipynb']
+['data/inflammation-09.csv',
+ 'data/small-03.csv',
+ 'data/inflammation-11.csv',
+ 'data/inflammation-07.csv',
+ 'data/inflammation-10.csv',
+ 'data/inflammation-01.csv',
+ 'data/inflammation-12.csv',
+ 'data/small-02.csv',
+ 'data/inflammation-03.csv',
+ 'data/inflammation-05.csv',
+ 'data/inflammation-06.csv',
+ 'data/inflammation-04.csv',
+ 'data/inflammation-08.csv',
+ 'data/inflammation-02.csv',
+ 'data/small-01.csv']
 ~~~
 
-or to get the names of all our CSV data files:
+using `?`, we can get a subset of inflammation CSV files:
 
 ~~~ {.python}
-print glob.glob('*.csv')
+print glob.glob('data/inflammation-0?.csv')
 ~~~
 
 ~~~ {.output}
-['inflammation-01.csv', 'inflammation-02.csv', 'inflammation-03.csv', 'inflammation-04.csv', 'inflammation-05.csv', 'inflammation-06.csv', 'inflammation-07.csv', 'inflammation-08.csv', 'inflammation-09.csv', 'inflammation-10.csv', 'inflammation-11.csv', 'inflammation-12.csv', 'small-01.csv', 'small-02.csv', 'small-03.csv']
+['data/inflammation-09.csv',
+ 'data/inflammation-07.csv',
+ 'data/inflammation-01.csv',
+ 'data/inflammation-03.csv',
+ 'data/inflammation-05.csv',
+ 'data/inflammation-06.csv',
+ 'data/inflammation-04.csv',
+ 'data/inflammation-08.csv',
+ 'data/inflammation-02.csv']
 ~~~
 
 As these examples show,
