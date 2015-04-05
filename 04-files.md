@@ -24,7 +24,7 @@ character.
 We can use `glob` to get the names of all our CSV files:
 
 ~~~ {.python}
-print glob.glob('data/*.csv')
+glob.glob('data/*.csv')
 ~~~
 
 ~~~ {.output}
@@ -48,7 +48,7 @@ print glob.glob('data/*.csv')
 using `?`, we can get a subset of inflammation CSV files:
 
 ~~~ {.python}
-print glob.glob('data/inflammation-0?.csv')
+glob.glob('data/inflammation-0?.csv')
 ~~~
 
 ~~~ {.output}
@@ -63,8 +63,28 @@ print glob.glob('data/inflammation-0?.csv')
  'data/inflammation-02.csv']
 ~~~
 
-As these examples show,
-`glob.glob`'s result is a list of strings,
+As these examples show, `glob.glob` returns an unsorted list of strings,.
+The `sorted` function can be used to return a copy of a list in sorted order:
+
+~~~ {.python}
+sorted(glob.glob('data/inflammation-*.csv'))
+~~~
+
+~~~ {.output}
+['data/inflammation-01.csv',
+ 'data/inflammation-02.csv',
+ 'data/inflammation-03.csv',
+ 'data/inflammation-04.csv',
+ 'data/inflammation-05.csv',
+ 'data/inflammation-06.csv',
+ 'data/inflammation-07.csv',
+ 'data/inflammation-08.csv',
+ 'data/inflammation-09.csv',
+ 'data/inflammation-10.csv',
+ 'data/inflammation-11.csv',
+ 'data/inflammation-12.csv']
+~~~
+
 which means we can loop over it
 to do something with each filename in turn.
 In our case,
@@ -72,13 +92,12 @@ the "something" we want is the code that generates those plots of our inflammati
 Let's test it by analyzing the first three files in the list:
 
 ~~~ {.python}
-filenames = glob.glob('*.csv')
-filenames = filenames[0:3]
+filenames = sorted(glob.glob('data/*.csv'))
+filenames = filenames[:3]
 for f in filenames:
     print f
 
     data = np.loadtxt(fname=f, delimiter=',')
-
     fig = plt.figure(figsize=(10.0, 3.0))
 
     axes1 = fig.add_subplot(1, 3, 1)
