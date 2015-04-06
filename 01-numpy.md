@@ -660,7 +660,7 @@ Here are our three plots side by side using aliases for `numpy` and `pyplot`:
 import numpy as np
 from matplotlib import pyplot as plt
 
-data = np.loadtxt(fname='inflammation-01.csv', delimiter=',')
+data = np.loadtxt(fname='data/inflammation-01.csv', delimiter=',')
 
 fig = plt.figure(figsize=(10.0, 3.0))
 
