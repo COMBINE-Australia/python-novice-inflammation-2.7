@@ -29,7 +29,7 @@
           <h2 class="subtitle">Repeating Actions with Loops</h2>
 <div id="learning-objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives" class="objectives panel panel-warning"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -86,7 +86,7 @@ n</code></pre>
 <pre class="sourceCode python"><code class="sourceCode python">word = <span class="st">&#39;oxygen&#39;</span>
 <span class="kw">for</span> char in word:
     <span class="dt">print</span> char</code></pre>
-<p>The improved version of <code>print_characters</code> uses a <a href="reference.html#for-loop">for loop</a> to repeat an operation---in this case, printing---once for each thing in a collection. The general form of a loop is:</p>
+<p>The improved version uses a <a href="reference.html#for-loop">for loop</a> to repeat an operation---in this case, printing---once for each thing in a collection. The general form of a loop is:</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="kw">for</span> variable in collection:
     do things <span class="kw">with</span> variable</code></pre>
 <p>We can call the <a href="reference.html#loop-variable">loop variable</a> anything we like, but there must be a colon at the end of the line starting the loop, and we must indent the body of the loop. Unlike many other languages, there is no command to end a loop (e.g. end for); what is indented after the for statement belongs to the loop.</p>
@@ -106,7 +106,7 @@ n</code></pre>
 <p><code>len</code> is much faster than any function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can.</p>
 <div id="from-1-to-n" class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>From 1 to N</h2>
+<h2 id="from-1-to-n" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>From 1 to N</h2>
 </div>
 <div class="panel-body">
 <p>Python has a built-in function called <code>range</code> that creates a list of numbers: <code>range(3)</code> produces <code>[0, 1, 2]</code>, <code>range(2, 5)</code> produces <code>[2, 3, 4]</code>. Using <code>range</code>, write a loop that uses <code>range</code> to print the first 3 natural numbers:</p>
@@ -117,7 +117,7 @@ n</code></pre>
 </div>
 <div id="computing-powers-with-loops" class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Computing powers with loops</h2>
+<h2 id="computing-powers-with-loops" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Computing powers with loops</h2>
 </div>
 <div class="panel-body">
 <p>Exponentiation is built into Python:</p>
@@ -128,7 +128,7 @@ n</code></pre>
 </div>
 <div id="reverse-a-string" class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Reverse a string</h2>
+<h2 id="reverse-a-string" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Reverse a string</h2>
 </div>
 <div class="panel-body">
 <p>Write a loop that takes a string, and produces a new string with the characters in reverse order, so <code>'Newton'</code> becomes <code>'notweN'</code>.</p>
