@@ -69,7 +69,7 @@
  &#39;data/inflammation-04.csv&#39;,
  &#39;data/inflammation-08.csv&#39;,
  &#39;data/inflammation-02.csv&#39;]</code></pre>
-<p>As these examples show, <code>glob.glob</code> returns an unsorted list of strings. The <code>sorted</code> function can be used to return a copy of a list in sorted order:</p>
+<p>the <code>sorted</code> function can then be used to sort the list in <a href="http://en.wikipedia.org/wiki/Lexicographical_order">lexicographic</a> order:</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="dt">sorted</span>(glob.glob(<span class="st">&#39;data/inflammation-*.csv&#39;</span>))</code></pre>
 <pre class="output"><code>[&#39;data/inflammation-01.csv&#39;,
  &#39;data/inflammation-02.csv&#39;,

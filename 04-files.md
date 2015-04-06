@@ -63,8 +63,8 @@ glob.glob('data/inflammation-0?.csv')
  'data/inflammation-02.csv']
 ~~~
 
-As these examples show, `glob.glob` returns an unsorted list of strings.  The
-`sorted` function can be used to return a copy of a list in sorted order:
+the `sorted` function can then be used to sort the list in
+[lexicographic](http://en.wikipedia.org/wiki/Lexicographical_order) order:
 
 ~~~ {.python}
 sorted(glob.glob('data/inflammation-*.csv'))
