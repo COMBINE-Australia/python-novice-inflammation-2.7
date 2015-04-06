@@ -16,47 +16,85 @@ The only thing that's missing is a library with a rather unpleasant name:
 import glob
 ~~~
 
-The `glob` library contains a single function, also called `glob`,
-that finds files whose names match a pattern.
-We provide those patterns as strings:
-the character `*` matches zero or more characters,
-while `?` matches any one character.
-We can use this to get the names of all the IPython Notebooks we have created so far:
+The `glob` library contains a single function, also called `glob`, that finds
+files whose names match a pattern. We provide those patterns as strings: the
+character `*` matches zero or more characters, while `?` matches any one
+character.
+
+We can use `glob` to get the names of all our CSV files:
 
 ~~~ {.python}
-print glob.glob('*.ipynb')
+glob.glob('data/*.csv')
 ~~~
 
 ~~~ {.output}
-['01-numpy.ipynb', '02-func.ipynb', '03-loop.ipynb', '04-cond.ipynb', '05-defensive.ipynb', '06-cmdline.ipynb', 'spatial-intro.ipynb']
+['data/inflammation-09.csv',
+ 'data/small-03.csv',
+ 'data/inflammation-11.csv',
+ 'data/inflammation-07.csv',
+ 'data/inflammation-10.csv',
+ 'data/inflammation-01.csv',
+ 'data/inflammation-12.csv',
+ 'data/small-02.csv',
+ 'data/inflammation-03.csv',
+ 'data/inflammation-05.csv',
+ 'data/inflammation-06.csv',
+ 'data/inflammation-04.csv',
+ 'data/inflammation-08.csv',
+ 'data/inflammation-02.csv',
+ 'data/small-01.csv']
 ~~~
 
-or to get the names of all our CSV data files:
+using `?`, we can get a subset of inflammation CSV files:
 
 ~~~ {.python}
-print glob.glob('*.csv')
+glob.glob('data/inflammation-0?.csv')
 ~~~
 
 ~~~ {.output}
-['inflammation-01.csv', 'inflammation-02.csv', 'inflammation-03.csv', 'inflammation-04.csv', 'inflammation-05.csv', 'inflammation-06.csv', 'inflammation-07.csv', 'inflammation-08.csv', 'inflammation-09.csv', 'inflammation-10.csv', 'inflammation-11.csv', 'inflammation-12.csv', 'small-01.csv', 'small-02.csv', 'small-03.csv']
+['data/inflammation-09.csv',
+ 'data/inflammation-07.csv',
+ 'data/inflammation-01.csv',
+ 'data/inflammation-03.csv',
+ 'data/inflammation-05.csv',
+ 'data/inflammation-06.csv',
+ 'data/inflammation-04.csv',
+ 'data/inflammation-08.csv',
+ 'data/inflammation-02.csv']
 ~~~
 
-As these examples show,
-`glob.glob`'s result is a list of strings,
-which means we can loop over it
-to do something with each filename in turn.
-In our case,
-the "something" we want is the code that generates those plots of our inflammation data.
-Let's test it by analyzing the first three files in the list:
+the `sorted` function can then be used to sort the list in
+[lexicographic](http://en.wikipedia.org/wiki/Lexicographical_order) order:
 
 ~~~ {.python}
-filenames = glob.glob('*.csv')
-filenames = filenames[0:3]
+sorted(glob.glob('data/inflammation-*.csv'))
+~~~
+
+~~~ {.output}
+['data/inflammation-01.csv',
+ 'data/inflammation-02.csv',
+ 'data/inflammation-03.csv',
+ 'data/inflammation-04.csv',
+ 'data/inflammation-05.csv',
+ 'data/inflammation-06.csv',
+ 'data/inflammation-07.csv',
+ 'data/inflammation-08.csv',
+ 'data/inflammation-09.csv',
+ 'data/inflammation-10.csv',
+ 'data/inflammation-11.csv',
+ 'data/inflammation-12.csv']
+~~~
+
+We can now generate plots of the inflammation data by looping over a list of
+their filenames. Let's do this for the first three inflammation CSV files:
+
+~~~ {.python}
+filenames = sorted(glob.glob('data/inflammation-*.csv'))
+filenames = filenames[:3]
 for f in filenames:
     print f
 
     data = np.loadtxt(fname=f, delimiter=',')
-
     fig = plt.figure(figsize=(10.0, 3.0))
 
     axes1 = fig.add_subplot(1, 3, 1)
@@ -75,6 +113,8 @@ for f in filenames:
     fig.tight_layout()
     plt.show(fig)
 ~~~
+
+which produces the following:
 
 ~~~ {.output}
 inflammation-01.csv
