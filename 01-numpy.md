@@ -163,7 +163,7 @@ This is different from the way spreadsheets work.
 > eggs_red = 4
 > # Total eggs collected
 > eggs_total = eggs_blue + eggs_red
-> # But two blue eggs broke!
+> # But one blue egg broke!
 > eggs_blue = eggs_blue - 1
 > # How many eggs do we have?
 > print eggs_total
