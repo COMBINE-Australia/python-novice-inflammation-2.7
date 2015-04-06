@@ -35,7 +35,7 @@ and setting it up on the bench.
 Once it's done, we can ask the library to read our data file for us:
 
 ~~~ {.python}
-numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+numpy.loadtxt(fname='data/inflammation-01.csv', delimiter=',')
 ~~~
 ~~~ {.output}
 array([[ 0.,  0.,  1., ...,  3.,  0.,  0.],
@@ -155,6 +155,32 @@ Since `weight_lb` doesn't "remember" where its value came from,
 it isn't automatically updated when `weight_kg` changes.
 This is different from the way spreadsheets work.
 
+> ## Easter special: how many eggs? {.challenge}
+>
+> ~~~ {.python}
+> # Number of hidden eggs
+> eggs_blue = 6
+> eggs_red = 4
+> # Total eggs collected
+> eggs_total = eggs_blue + eggs_red
+> # But two blue eggs broke!
+> eggs_blue = eggs_blue - 1
+> # How many eggs do we have?
+> print eggs_total
+> ~~~
+>
+> Given the code above, what will be printed at the end?
+> 
+> **A**: 10
+> 
+> **B**: 5
+> 
+> **C**: 4
+> 
+> **D**: 9
+>
+> Can you suggest a change in the code?
+
 > ## What's inside the box? {.challenge}
 >
 > Draw diagrams showing what variables refer to what values after each statement in the following program:
@@ -181,7 +207,7 @@ Just as we can assign a single value to a variable, we can also assign an array 
 to a variable using the same syntax.  Let's re-run `numpy.loadtxt` and save its result:
 
 ~~~ {.python}
-data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+data = numpy.loadtxt(fname='data/inflammation-01.csv', delimiter=',')
 ~~~
 
 This statement doesn't produce any output because assignment doesn't display anything.
@@ -335,6 +361,31 @@ small is:
 > We can take slices of character strings as well:
 >
 > ~~~ {.python}
+> element = 'hydrogen'
+> print 'first two characters:', element[0:2]
+> print 'last two characters:', element[6:8]
+> ~~~
+>
+> ~~~ {.output}
+> first two characters: hy
+> last two characters: en
+> ~~~
+>
+> Based on the code above, what the values of `element[:5]` and `element[5:]` and `element[:]`?
+>
+> **A**: `hydrog` and `en` and ``
+>
+> **B**: `hydro` and `gen` and `hydrogen`
+>
+> **C**: `hydr` and `ogen` and `hydrogen`
+>
+> **D**: `hydro` and `gen` and ``
+
+> ## Negative indexes {.challenge}
+>
+> We can also use negative indexes to access characters in strings:
+>
+> ~~~ {.python}
 > element = 'oxygen'
 > print 'first three characters:', element[0:3]
 > print 'last three characters:', element[3:6]
@@ -344,10 +395,6 @@ small is:
 > first three characters: oxy
 > last three characters: gen
 > ~~~
->
-> What is the value of `element[:4]`?
-> What about `element[4:]`?
-> Or `element[:]`?
 >
 > What is `element[-1]`?
 > What is `element[-2]`?
@@ -546,10 +593,13 @@ While there is no "official" plotting library,
 this package is the de facto standard.
 First,
 we will import the `pyplot` module from `matplotlib`
-and use two of its functions to create and display a heat map of our data:
+and use two of its functions to create and display a heat map of our data.
+We will also use the ipython notebook magic command `%matplotlib inline`, in order
+to embed plots inside the notebook:
 
 ~~~ {.python}
 from matplotlib import pyplot
+%matplotlib inline
 image  = pyplot.imshow(data)
 pyplot.show(image)
 ~~~
@@ -598,6 +648,10 @@ Neither result seems particularly likely,
 so either there's a mistake in our calculations
 or something is wrong with our data.
 
+> ## Make your own plot {.challenge}
+>
+> Create a plot showing the standard deviation of the inflammation data for each day across all patients.
+
 It's very common to create an [alias](reference.html#alias) for a library when importing it
 in order to reduce the amount of typing we have to do.
 Here are our three plots side by side using aliases for `numpy` and `pyplot`:
@@ -642,71 +696,9 @@ the graphs will actually be squeezed together more closely.)
 
 > ## Check your understanding {.challenge}
 >
-> Plot scaling: why do all of our plots stop just short of the upper end of our graph?
+> Plot scaling: why do some of our plots stop just short of the upper end of our graph?
 >
-> Draw diagrams showing what variables refer to what values after each statement in the following program:
->
-> ~~~ {.python}
-> mass = 47.5
-> age = 122
-> mass = mass * 2.0
-> age = age - 20
-> ~~~
-
-> ## Sorting out references {.challenge}
->
-> What does the following program print out?
->
-> ~~~ {.python}
-> first, second = 'Grace', 'Hopper'
-> third, fourth = second, first
-> print third, fourth
-> ~~~
-
-> ## Slicing strings {.challenge}
->
-> A section of an array is called a [slice](reference.html#slice).
-> We can take slices of character strings as well:
->
-> ~~~ {.python}
-> element = 'oxygen'
-> print 'first three characters:', element[0:3]
-> print 'last three characters:', element[3:6]
-> ~~~
->
-> ~~~ {.output}
-> first three characters: oxy
-> last three characters: gen
-> ~~~
->
-> What is the value of `element[:4]`?
-> What about `element[4:]`?
-> Or `element[:]`?
->
-> What is `element[-1]`?
-> What is `element[-2]`?
-> Given those answers,
-> explain what `element[1:-1]` does.
-
-> ## Thin slices {.challenge}
->
-> The expression `element[3:3]` produces an [empty string](reference.html#empty-string),
-> i.e., a string that contains no characters.
-> If `data` holds our array of patient data,
-> what does `data[3:3, 4:4]` produce?
-> What about `data[3:3, :]`?
-
-> ## Check your understanding: plot scaling {.challenge}
->
-> Why do all of our plots stop just short of the upper end of our graph?
-
-> ## Check your understanding: drawing straight lines {.challenge}
->
-> Why are the vertical lines in our plot of the minimum inflammation per day not perfectly vertical?
-
-> ## Make your own plot {.challenge}
->
-> Create a plot showing the standard deviation of the inflammation data for each day across all patients.
+> Drawing straight lines: why are the vertical lines in our plot of the minimum inflammation per day not perfectly vertical?
 
 > ## Moving plots around {.challenge}
 >
