@@ -15,7 +15,7 @@ following dependencies installed.
 
 ### Pandoc
 
-`pandoc` is a program that can convert documents between formats (e.g. `.md` to
+`pandoc` is a program that converts documents between formats (e.g. `.md` to
 `.html` and vice-versa). The official installation instructions can be found
 [here][pandoc-install]. On Ubuntu, `pandoc` can be installed from the
 command-line by running:
@@ -25,7 +25,7 @@ sudo apt-get install pandoc
 
 ### Python libraries
 
-The `[requirements.txt](requirements.txt)` file contains a list of the required
+The [`requirements.txt`](requirements.txt) file contains a list of the required
 Python libraries. These can be installed from the command-line using `pip`:
 ```
 pip install -r ./requirements.txt
