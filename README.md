@@ -15,8 +15,10 @@ following dependencies installed.
 
 ### Pandoc
 
-Official innstallation instructions can be found [here][pandoc-install]. On
-Ubuntu, `pandoc` can be installed from the command-line by running:
+`pandoc` is a program that can convert documents between formats (e.g. `.md` to
+`.html` and vice-versa). The official installation instructions can be found
+[here][pandoc-install]. On Ubuntu, `pandoc` can be installed from the
+command-line by running:
 ```
 sudo apt-get install pandoc
 ```
