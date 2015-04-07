@@ -7,7 +7,7 @@ minutes: 20
 > ## Learning Objectives {.objectives}
 >
 > *   Use a library function to get a list of filenames that match a simple wildcard pattern.
-> *   Use a for loop to process multiple files.
+> *   Use a `for` loop to process multiple files.
 
 We now have almost everything we need to process all our data files.
 The only thing that's missing is a library with a rather unpleasant name:
