@@ -6,8 +6,8 @@ minutes: 20
 ---
 > ## Learning Objectives {.objectives}
 >
-> *   Use a library function to get a list of filenames that match a simple wildcard pattern.
-> *   Use a `for` loop to process multiple files.
+> * Use a library function to get a list of filenames that match a simple wildcard pattern.
+> * Use a `for` loop to process multiple files.
 
 We now have almost everything we need to process all our data files.
 The only thing that's missing is a library with a rather unpleasant name:
@@ -86,7 +86,7 @@ sorted(glob.glob('data/inflammation-*.csv'))
 ~~~
 
 We can now generate plots of the inflammation data by looping over a list of
-their filenames. Let's do this for the first three inflammation CSV files:
+their filenames. Let's do this for the first three inflammation CSV files re-using the code from [lesson 1](01-numpy.html):
 
 ~~~ {.python}
 filenames = sorted(glob.glob('data/inflammation-*.csv'))
@@ -141,3 +141,9 @@ the maxima of the first two data sets show exactly the same ramp as the first,
 and their minima show the same staircase structure;
 a different situation has been revealed in the third dataset,
 where the maxima are a bit less regular, but the minima are consistently zero.
+
+
+## Useful links
+
+- [Python Module of the Week's article on `glob`](http://pymotw.com/2/glob/)
+- [Matplotlib gallery](http://matplotlib.org/gallery.html)
