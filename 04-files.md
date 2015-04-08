@@ -117,21 +117,21 @@ for f in filenames:
 which produces the following:
 
 ~~~ {.output}
-inflammation-01.csv
+data/inflammation-01.csv
 ~~~
 
 ![Analysis of inflammation-01.csv](fig/03-loop_49_1.png)\
 
 
 ~~~ {.output}
-inflammation-02.csv
+data/inflammation-02.csv
 ~~~
 
 ![Analysis of inflammation-02.csv](fig/03-loop_49_3.png)\
 
 
 ~~~ {.output}
-inflammation-03.csv
+data/inflammation-03.csv
 ~~~
 
 ![Analysis of inflammation-03.csv](fig/03-loop_49_5.png)\
