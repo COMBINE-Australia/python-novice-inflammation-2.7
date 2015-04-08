@@ -213,6 +213,20 @@ or doing all manner of other things to respond to changing conditions in our dat
 
 > ## Tuples and exchanges {.challenge}
 >
+> A _tuple_ is an _immutable_ ordered list of _n_-elements, typically used to
+> represent data with a pre-determined structure.
+>
+> For example:
+>
+> ~~~ {.python}
+> ("Space Oddity", "David Bowie", 1969) # (<album>, <artist>, <year>)
+> ("Nature", 42.351)                    # (<journal>, <impact factor>)
+> "grape", "purple"                     # (<fruit>, <colour>)
+> tuple("grape", "purple")              # (<fruit>, <colour>)
+> (10, 20)                              # (<x>, <y>)
+> (42,)                                 # (<meaning of life>,)
+> ~~~
+>
 > Explain what the overall effect of this code is:
 >
 > ~~~ {.python}

@@ -150,6 +150,14 @@ x *= <span class="dv">3</span> <span class="co"># multiply x by 3</span>
 <h2><span class="glyphicon glyphicon-pencil"></span>Tuples and exchanges</h2>
 </div>
 <div class="panel-body">
+<p>A <em>tuple</em> is an <em>immutable</em> ordered list of <em>n</em>-elements, typically used to represent data with a pre-determined structure.</p>
+<p>For example:</p>
+<pre class="sourceCode python"><code class="sourceCode python">(<span class="st">&quot;Space Oddity&quot;</span>, <span class="st">&quot;David Bowie&quot;</span>, <span class="dv">1969</span>) <span class="co"># (&lt;album&gt;, &lt;artist&gt;, &lt;year&gt;)</span>
+(<span class="st">&quot;Nature&quot;</span>, <span class="fl">42.351</span>)                    <span class="co"># (&lt;journal&gt;, &lt;impact factor&gt;)</span>
+<span class="co">&quot;grape&quot;</span>, <span class="st">&quot;purple&quot;</span>                     <span class="co"># (&lt;fruit&gt;, &lt;colour&gt;)</span>
+<span class="dt">tuple</span>(<span class="st">&quot;grape&quot;</span>, <span class="st">&quot;purple&quot;</span>)              <span class="co"># (&lt;fruit&gt;, &lt;colour&gt;)</span>
+(<span class="dv">10</span>, <span class="dv">20</span>)                              <span class="co"># (&lt;x&gt;, &lt;y&gt;)</span>
+(<span class="dv">42</span>,)                                 <span class="co"># (&lt;meaning of life&gt;,)</span></code></pre>
 <p>Explain what the overall effect of this code is:</p>
 <pre class="sourceCode python"><code class="sourceCode python">temp = left
 left = right
