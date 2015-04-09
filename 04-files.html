@@ -83,7 +83,7 @@
  &#39;data/inflammation-10.csv&#39;,
  &#39;data/inflammation-11.csv&#39;,
  &#39;data/inflammation-12.csv&#39;]</code></pre>
-<p>We can now generate plots of the inflammation data by looping over a list of their filenames. Let's do this for the first three inflammation CSV files:</p>
+<p>We can now generate plots of the inflammation data by looping over a list of their filenames. Let's do this for the first three inflammation CSV files re-using the code from <a href="01-numpy.html">lesson 1</a>:</p>
 <pre class="sourceCode python"><code class="sourceCode python">filenames = <span class="dt">sorted</span>(glob.glob(<span class="st">&#39;data/inflammation-*.csv&#39;</span>))
 filenames = filenames[:<span class="dv">3</span>]
 <span class="kw">for</span> f in filenames:
@@ -108,12 +108,24 @@ filenames = filenames[:<span class="dv">3</span>]
     fig.tight_layout()
     plt.show(fig)</code></pre>
 <p>which produces the following:</p>
-<pre class="output"><code>inflammation-01.csv</code></pre>
-<p><img src="fig/03-loop_49_1.png" alt="Analysis of inflammation-01.csv" /><br /></p>
-<pre class="output"><code>inflammation-02.csv</code></pre>
-<p><img src="fig/03-loop_49_3.png" alt="Analysis of inflammation-02.csv" /><br /></p>
-<pre class="output"><code>inflammation-03.csv</code></pre>
-<p><img src="fig/03-loop_49_5.png" alt="Analysis of inflammation-03.csv" /><br /> Sure enough, the maxima of the first two data sets show exactly the same ramp as the first, and their minima show the same staircase structure; a different situation has been revealed in the third dataset, where the maxima are a bit less regular, but the minima are consistently zero.</p>
+<pre class="output"><code>data/inflammation-01.csv</code></pre>
+<div class="figure">
+<img src="fig/03-loop_49_1.png" alt="Analysis of inflammation-01.csv" /><p class="caption">Analysis of inflammation-01.csv</p>
+</div>
+<pre class="output"><code>data/inflammation-02.csv</code></pre>
+<div class="figure">
+<img src="fig/03-loop_49_3.png" alt="Analysis of inflammation-02.csv" /><p class="caption">Analysis of inflammation-02.csv</p>
+</div>
+<pre class="output"><code>data/inflammation-03.csv</code></pre>
+<div class="figure">
+<img src="fig/03-loop_49_5.png" alt="Analysis of inflammation-03.csv" /><p class="caption">Analysis of inflammation-03.csv</p>
+</div>
+<p>Sure enough, the maxima of the first two data sets show exactly the same ramp as the first, and their minima show the same staircase structure; a different situation has been revealed in the third dataset, where the maxima are a bit less regular, but the minima are consistently zero.</p>
+<h2 id="useful-links">Useful links</h2>
+<ul>
+<li><a href="http://pymotw.com/2/glob/">Python Module of the Week's article on <code>glob</code></a></li>
+<li><a href="http://matplotlib.org/gallery.html">Matplotlib gallery</a></li>
+</ul>
         </div>
       </div>
       <div class="footer">
