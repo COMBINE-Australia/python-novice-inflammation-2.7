@@ -33,9 +33,9 @@
 </div>
 <div class="panel-body">
 <ul>
-<li>Explain the similarities and differences between tuples and lists.</li>
 <li>Write conditional statements including <code>if</code>, <code>elif</code>, and <code>else</code> branches.</li>
 <li>Correctly evaluate expressions containing <code>and</code> and <code>or</code>.</li>
+<li>Explain the similarities and differences between tuples and lists.</li>
 </ul>
 </div>
 </div>
@@ -94,6 +94,45 @@ done
 <pre class="sourceCode python"><code class="sourceCode python"><span class="kw">else</span>:
     <span class="dt">print</span> <span class="st">&#39;Seems OK!&#39;</span></code></pre>
 <p>In this way, we can ask Python to do something different depending on the condition of our data. Here we printed messages in all cases, but we could also imagine not using the <code>else</code> catch-all so that messages are only printed when something is wrong, freeing us from having to manually examine every plot for features we've seen before, or doing all manner of other things to respond to changing conditions in our data.</p>
+<h2 id="tuples">Tuples</h2>
+<p>A <em>tuple</em> is an <em>immutable</em> ordered collection of elements, typically used to represent data with a pre-determined structure. Like lists, tuples may hold any python data structure.</p>
+<p>For example:</p>
+<pre class="sourceCode python"><code class="sourceCode python">(<span class="dv">10</span>, <span class="dv">20</span>)                              <span class="co"># (&lt;x&gt;, &lt;y&gt;)</span>
+(<span class="dv">2014</span>, <span class="st">&quot;Nature&quot;</span>, <span class="fl">42.351</span>, <span class="dv">857</span>)         <span class="co"># (&lt;year&gt;, &lt;journal&gt;, &lt;impact factor&gt;, &lt;total articles&gt;)</span>
+<span class="co">&quot;grape&quot;</span>, <span class="st">&quot;purple&quot;</span>                     <span class="co"># (&lt;fruit&gt;, &lt;colour&gt;)</span>
+<span class="dt">tuple</span>(<span class="st">&quot;grape&quot;</span>, <span class="st">&quot;purple&quot;</span>)              <span class="co"># (&lt;fruit&gt;, &lt;colour&gt;)</span>
+(<span class="dv">148573</span>, [<span class="st">&quot;H1&quot;</span>, <span class="st">&quot;H2A&quot;</span>, <span class="st">&quot;H3&quot;</span>, <span class="st">&quot;P&quot;</span>])    <span class="co"># (&lt;student id&gt;, &lt;grades&gt;)</span>
+(<span class="dv">42</span>,)                                 <span class="co"># (&lt;number&gt;,)</span></code></pre>
+<p>Tuple values are indexed and sliced just like lists and strings:</p>
+<pre class="sourceCode python"><code class="sourceCode python">x = (<span class="dv">2014</span>, <span class="st">&quot;Nature&quot;</span>, <span class="fl">42.351</span>, <span class="dv">857</span>)
+<span class="dt">print</span> x[<span class="dv">0</span>]
+<span class="dt">print</span> x[-<span class="dv">1</span>]
+<span class="dt">print</span> x[:<span class="dv">3</span>]
+<span class="dt">print</span> x[<span class="dv">1</span>][<span class="dv">2</span>:<span class="dv">5</span>]
+<span class="dt">print</span> x[<span class="dv">1</span>:-<span class="dv">1</span>]</code></pre>
+<pre><code>2014
+857
+(2014, &#39;Nature&#39;, 42.351)
+&#39;tur&#39;
+(&#39;Nature&#39;, 42.351)</code></pre>
+<p>Tuples are immutable:</p>
+<pre class="sourceCode python"><code class="sourceCode python">x = (<span class="dv">2014</span>, <span class="st">&quot;Nature&quot;</span>, <span class="fl">42.351</span>, <span class="dv">857</span>)
+x[<span class="dv">1</span>] = <span class="st">&quot;Science&quot;</span></code></pre>
+<pre><code>---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+&lt;ipython-input-13-655a6051aaa5&gt; in &lt;module&gt;()
+      1 x = (2014, &quot;Nature&quot;, 42.351, 857)
+      2 print x
+----&gt; 3 x[1] = &quot;Science&quot;
+
+TypeError: &#39;tuple&#39; object does not support item assignment</code></pre>
+<p>but they can be extended to form new tuples:</p>
+<pre class="sourceCode python"><code class="sourceCode python">x = (<span class="st">&quot;Alice&quot;</span>,)
+x = x + (<span class="st">&quot;Bob&quot;</span>,)
+x += (<span class="st">&quot;Chris&quot;</span>, <span class="st">&quot;John&quot;</span>)
+<span class="dt">print</span> x</code></pre>
+<pre><code>(&#39;Alice&#39;, &#39;Bob&#39;, &#39;Chris&#39;, &#39;John&#39;)</code></pre>
+<h2 id="challenges">Challenges</h2>
 <div id="how-many-paths" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>How many paths?</h2>
@@ -106,14 +145,13 @@ done
     <span class="dt">print</span> <span class="st">&#39;B&#39;</span>
 <span class="kw">elif</span> <span class="dv">4</span> &lt; <span class="dv">5</span>:
     <span class="dt">print</span> <span class="st">&#39;C&#39;</span></code></pre>
-<p>What is the expected output?</p>
+<p>What is the expected output? Why?</p>
 <ul>
 <li>&quot;A&quot;</li>
 <li>&quot;B&quot;</li>
 <li>&quot;C&quot;</li>
 <li>&quot;B&quot; and &quot;C&quot;</li>
 </ul>
-<p>Why?</p>
 </div>
 </div>
 <div id="what-is-truth" class="challenge panel panel-success">
@@ -158,13 +196,6 @@ x *= <span class="dv">3</span> <span class="co"># multiply x by 3</span>
 <h2><span class="glyphicon glyphicon-pencil"></span>Tuples and exchanges</h2>
 </div>
 <div class="panel-body">
-<p>A <em>tuple</em> is an <em>immutable</em> ordered list of <em>n</em>-elements, typically used to represent data with a pre-determined structure.</p>
-<p>For example:</p>
-<pre class="sourceCode python"><code class="sourceCode python">(<span class="dv">10</span>, <span class="dv">20</span>)                              <span class="co"># (&lt;x&gt;, &lt;y&gt;)</span>
-(<span class="st">&quot;Nature&quot;</span>, <span class="fl">42.351</span>)                    <span class="co"># (&lt;journal&gt;, &lt;impact factor&gt;)</span>
-<span class="co">&quot;grape&quot;</span>, <span class="st">&quot;purple&quot;</span>                     <span class="co"># (&lt;fruit&gt;, &lt;colour&gt;)</span>
-<span class="dt">tuple</span>(<span class="st">&quot;grape&quot;</span>, <span class="st">&quot;purple&quot;</span>)              <span class="co"># (&lt;fruit&gt;, &lt;colour&gt;)</span></code></pre>
-<p>Tuples can also be used for other programmatic tasks...</p>
 <p>Explain what the overall effect of this code is:</p>
 <pre class="sourceCode python"><code class="sourceCode python">temp = left
 left = right

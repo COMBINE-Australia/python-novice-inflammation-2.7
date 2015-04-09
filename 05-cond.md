@@ -6,9 +6,9 @@ minutes: 30
 ---
 > ## Learning Objectives {.objectives}
 >
-> *   Explain the similarities and differences between tuples and lists.
 > *   Write conditional statements including `if`, `elif`, and `else` branches.
 > *   Correctly evaluate expressions containing `and` and `or`.
+> *   Explain the similarities and differences between tuples and lists.
 
 In our last lesson, we discovered something suspicious was going on
 in our inflammation data by drawing some plots.
@@ -149,6 +149,74 @@ so that messages are only printed when something is wrong,
 freeing us from having to manually examine every plot for features we've seen before,
 or doing all manner of other things to respond to changing conditions in our data.
 
+## Tuples
+
+A _tuple_ is an _immutable_ ordered collection of elements, typically used to
+represent data with a pre-determined structure. Like lists, tuples may hold any
+python data structure.
+
+For example:
+
+~~~ {.python}
+(10, 20)                              # (<x>, <y>)
+(2014, "Nature", 42.351, 857)         # (<year>, <journal>, <impact factor>, <total articles>)
+"grape", "purple"                     # (<fruit>, <colour>)
+tuple("grape", "purple")              # (<fruit>, <colour>)
+(148573, ["H1", "H2A", "H3", "P"])    # (<student id>, <grades>)
+(42,)                                 # (<number>,)
+~~~
+
+Tuple values are indexed and sliced just like lists and strings:
+
+~~~ {.python}
+x = (2014, "Nature", 42.351, 857)
+print x[0]
+print x[-1]
+print x[:3]
+print x[1][2:5]
+print x[1:-1]
+~~~
+```
+2014
+857
+(2014, 'Nature', 42.351)
+'tur'
+('Nature', 42.351)
+```
+
+Tuples are immutable:
+
+~~~ {.python}
+x = (2014, "Nature", 42.351, 857)
+x[1] = "Science"
+~~~
+```
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-13-655a6051aaa5> in <module>()
+      1 x = (2014, "Nature", 42.351, 857)
+      2 print x
+----> 3 x[1] = "Science"
+
+TypeError: 'tuple' object does not support item assignment
+```
+
+but they can be extended to form new tuples:
+
+~~~ {.python}
+x = ("Alice",)
+x = x + ("Bob",)
+x += ("Chris", "John")
+print x
+~~~
+```
+('Alice', 'Bob', 'Chris', 'John')
+```
+
+
+
+## Challenges
+
 > ## How many paths? {.challenge}
 > 
 > Given the following piece of code:
@@ -162,14 +230,12 @@ or doing all manner of other things to respond to changing conditions in our dat
 >     print 'C'
 > ~~~
 >
-> What is the expected output?
+> What is the expected output? Why?
 >
 > * "A"
 > * "B"
 > * "C"
 > * "B" and "C"
-> 
-> Why?
 
 > ## What is truth? {.challenge}
 >
@@ -216,20 +282,6 @@ or doing all manner of other things to respond to changing conditions in our dat
 > Do you think the result is more or less readable than writing the same without in-place operators?
 
 > ## Tuples and exchanges {.challenge}
->
-> A _tuple_ is an _immutable_ ordered list of _n_-elements, typically used to
-> represent data with a pre-determined structure.
->
-> For example:
->
-> ~~~ {.python}
-> (10, 20)                              # (<x>, <y>)
-> ("Nature", 42.351)                    # (<journal>, <impact factor>)
-> "grape", "purple"                     # (<fruit>, <colour>)
-> tuple("grape", "purple")              # (<fruit>, <colour>)
-> ~~~
->
-> Tuples can also be used for other programmatic tasks...
 >
 > Explain what the overall effect of this code is:
 >
