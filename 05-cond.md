@@ -151,13 +151,8 @@ or doing all manner of other things to respond to changing conditions in our dat
 
 > ## How many paths? {.challenge}
 > 
-> Which of the following would be printed if you were to run this code? Why did you pick this answer?
+> Given the following piece of code:
 >
-> A
-> B
-> C
-> B and C
-> 
 > ~~~ {.python}
 > if 4 > 5:
 >     print 'A'
@@ -166,13 +161,21 @@ or doing all manner of other things to respond to changing conditions in our dat
 > elif 4 < 5:
 >     print 'C'
 > ~~~
+>
+> What is the expected output?
+>
+> * "A"
+> * "B"
+> * "C"
+> * "B" and "C"
+> 
+> Why?
 
 > ## What is truth? {.challenge}
 >
 > `True` and `False` aren't the only values in Python that are true and false.
-> In fact, *any* value can be used in an `if` or `elif`.
-> After reading and running the code below,
-> explain what the rule is for which values are considered true and which are considered false.
+> In fact, *any* value can be used in an `if` or `elif`.  Read and run the code
+> below. 
 > (Note that if the body of a conditional is a single statement, we can write it on the same line as the `if`.)
 >
 > ~~~ {.python}
@@ -183,6 +186,7 @@ or doing all manner of other things to respond to changing conditions in our dat
 > if 0: print 'zero is true'
 > if 1: print 'one is true'
 > ~~~
+> Why are certain values are considered `True` or `False`.
 
 > ## Close enough {.challenge}
 >
@@ -219,13 +223,13 @@ or doing all manner of other things to respond to changing conditions in our dat
 > For example:
 >
 > ~~~ {.python}
-> ("Space Oddity", "David Bowie", 1969) # (<album>, <artist>, <year>)
+> (10, 20)                              # (<x>, <y>)
 > ("Nature", 42.351)                    # (<journal>, <impact factor>)
 > "grape", "purple"                     # (<fruit>, <colour>)
 > tuple("grape", "purple")              # (<fruit>, <colour>)
-> (10, 20)                              # (<x>, <y>)
-> (42,)                                 # (<meaning of life>,)
 > ~~~
+>
+> Tuples can also be used for other programmatic tasks...
 >
 > Explain what the overall effect of this code is:
 >
@@ -241,5 +245,4 @@ or doing all manner of other things to respond to changing conditions in our dat
 > left, right = right, left
 > ~~~
 >
-> Do they always do the same thing?
 > Which do you find easier to read?
