@@ -161,7 +161,7 @@ For example:
 (10, 20)                              # (<x>, <y>)
 (2014, "Nature", 42.351, 857)         # (<year>, <journal>, <impact factor>, <total articles>)
 "grape", "purple"                     # (<fruit>, <colour>)
-tuple("grape", "purple")              # (<fruit>, <colour>)
+tuple(["grape", "purple"])            # (<fruit>, <colour>)
 (148573, ["H1", "H2A", "H3", "P"])    # (<student id>, <grades>)
 (42,)                                 # (<number>,)
 ~~~
