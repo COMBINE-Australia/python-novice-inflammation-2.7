@@ -121,7 +121,7 @@ def normalize_rectangle(rect):
     return (0, 0, upper_x, upper_y)
 ~~~
 
-The preconditions on lines 2, 4, and 5 catch invalid inputs:
+The preconditions on lines 3, 5, and 6 catch invalid inputs:
 
 ~~~ {.python}
 print normalize_rectangle( (0.0, 1.0, 2.0) ) # missing the fourth coordinate
@@ -196,7 +196,7 @@ AssertionError: Calculated upper Y coordinate invalid
 
 Re-reading our function,
 we realize that line 10 should divide `dy` by `dx` rather than `dx` by `dy`.
-(You can display line numbers by typing Ctrl-M, then L.)
+(You can display line numbers by typing 'esc', then L.)
 If we had left out the assertion at the end of the function,
 we would have created and returned something that had the right shape as a valid answer,
 but wasn't.

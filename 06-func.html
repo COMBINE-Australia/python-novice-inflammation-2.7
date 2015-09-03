@@ -386,10 +386,25 @@ loadtxt(fname, dtype=&lt;type &#39;float&#39;&gt;, comments=&#39;#&#39;, delimit
 <pre class="sourceCode python"><code class="sourceCode python"><span class="dt">print</span> outer(<span class="st">&#39;helium&#39;</span>)
 hm</code></pre>
 </div>
+<<<<<<< HEAD
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Rescaling an array</h2>
+=======
+</div>
+<div id="rescaling-with-parameters" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Rescaling, with parameters</h2>
+</div>
+<div class="panel-body">
+<p>Rewrite the <code>rescale</code> function so that it scales data to lie between 0.0 and 1.0 by default, but will allow the caller to specify lower and upper bounds if they want. Compare your implementation to your neighbor's: do the two functions always behave the same way?</p>
+</div>
+</div>
+<div id="automatic-plots" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Automatic plots</h2>
+>>>>>>> 6da8b8885f9842724016a52be06744b86d56d591
 </div>
 <div class="panel-body">
 <p>Write a function <code>rescale</code> that takes an array as input and returns a corresponding array of values scaled to lie in the range 0.0 to 1.0. (Hint: If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original array, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>)/(<em>H</em> − <em>L</em>)</span>.)</p>
@@ -397,15 +412,26 @@ hm</code></pre>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
+<<<<<<< HEAD
 <h2><span class="glyphicon glyphicon-pencil"></span>Testing and documenting your function</h2>
 </div>
 <div class="panel-body">
 <p>Run the commands <code>help(numpy.arange)</code> and <code>help(numpy.linspace)</code> to see how to use these functions to generate regularly-spaced values, then use those values to test your <code>rescale</code> function. Once you’ve successfully tested your function, add a docstring that explains what it does.</p>
+=======
+<h2><span class="glyphicon glyphicon-pencil"></span>Rescaling an array</h2>
+</div>
+<div class="panel-body">
+<p>Write a function <code>rescale</code> that takes an array as input and returns a corresponding array of values scaled to lie in the range 0.0 to 1.0. (If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original array, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>) / (<em>H</em> − <em>L</em>)</span>.) Be sure to give the function a docstring.</p>
+>>>>>>> 6da8b8885f9842724016a52be06744b86d56d591
 </div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
+<<<<<<< HEAD
 <h2><span class="glyphicon glyphicon-pencil"></span>Defining defaults</h2>
+=======
+<h2><span class="glyphicon glyphicon-pencil"></span>Testing your function</h2>
+>>>>>>> 6da8b8885f9842724016a52be06744b86d56d591
 </div>
 <div class="panel-body">
 <p>Rewrite the <code>rescale</code> function so that it scales data to lie between 0.0 and 1.0 by default, but will allow the caller to specify lower and upper bounds if they want. Compare your implementation to your neighbor’s: do the two functions always behave the same way?</p>

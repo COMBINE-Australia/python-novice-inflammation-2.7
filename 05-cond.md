@@ -6,9 +6,9 @@ minutes: 30
 ---
 > ## Learning Objectives {.objectives}
 >
-> *   Explain the similarities and differences between tuples and lists.
 > *   Write conditional statements including `if`, `elif`, and `else` branches.
 > *   Correctly evaluate expressions containing `and` and `or`.
+> *   Explain the similarities and differences between tuples and lists.
 
 In our last lesson, we discovered something suspicious was going on
 in our inflammation data by drawing some plots.
@@ -171,31 +171,107 @@ but we could also imagine not using the `else` catch-all
 so that messages are only printed when something is wrong,
 freeing us from having to manually examine every plot for features we've seen before.
 
+## Tuples
+
+A _tuple_ is an _immutable_ ordered collection of elements, typically used to
+represent data with a pre-determined structure. Like lists, tuples may hold any
+python data structure.
+
+For example:
+
+~~~ {.python}
+(10, 20)                              # (<x>, <y>)
+(2014, "Nature", 42.351, 857)         # (<year>, <journal>, <impact factor>, <total articles>)
+"grape", "purple"                     # (<fruit>, <colour>)
+tuple(["grape", "purple"])            # (<fruit>, <colour>)
+(148573, ["H1", "H2A", "H3", "P"])    # (<student id>, <grades>)
+(42,)                                 # (<number>,)
+~~~
+
+Tuple values are indexed and sliced just like lists and strings:
+
+~~~ {.python}
+x = (2014, "Nature", 42.351, 857)
+print x[0]
+print x[-1]
+print x[:3]
+print x[1][2:5]
+print x[1:-1]
+~~~
+```
+2014
+857
+(2014, 'Nature', 42.351)
+'tur'
+('Nature', 42.351)
+```
+
+Tuples are immutable:
+
+~~~ {.python}
+x = (2014, "Nature", 42.351, 857)
+x[1] = "Science"
+~~~
+```
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-13-655a6051aaa5> in <module>()
+      1 x = (2014, "Nature", 42.351, 857)
+      2 print x
+----> 3 x[1] = "Science"
+
+TypeError: 'tuple' object does not support item assignment
+```
+
+but they can be extended to form new tuples:
+
+~~~ {.python}
+x = ("Alice",)
+x = x + ("Bob",)
+x += ("Chris", "John")
+print x
+~~~
+```
+('Alice', 'Bob', 'Chris', 'John')
+```
+
+
+
+## Challenges
+
 > ## How many paths? {.challenge}
->
-> Which of the following would be printed if you were to run this code? Why did you pick this answer?
->
-> 1.  A
-> 2.  B
-> 3.  C
-> 4.  B and C
+> 
+> Given the following piece of code:
 >
 > ~~~ {.python}
 > if 4 > 5:
 >     print 'A'
-> elif 4 == 5:
+> elif 4 <= 5:
 >     print 'B'
 > elif 4 < 5:
 >     print 'C'
 > ~~~
+>
+> What is the expected output? Why?
+>
+> * "A"
+> * "B"
+> * "C"
+> * "B" and "C"
 
 > ## What is truth? {.challenge}
 >
+<<<<<<< HEAD
 > `True` and `False` are special words in Python called `booleans` which represent true
 and false statements. However, they aren't the only values in Python that are true and false.
 > In fact, *any* value can be used in an `if` or `elif`.
 > After reading and running the code below,
 > explain what the rule is for which values are considered true and which are considered false.
+=======
+> `True` and `False` aren't the only values in Python that are true and false.
+> In fact, *any* value can be used in an `if` or `elif`.  Read and run the code
+> below. 
+>>>>>>> 6da8b8885f9842724016a52be06744b86d56d591
 > (Note that if the body of a conditional is a single statement, we can write it on the same line as the `if`.)
 >
 > ~~~ {.python}
@@ -206,6 +282,7 @@ and false statements. However, they aren't the only values in Python that are tr
 > if 0: print 'zero is true'
 > if 1: print 'one is true'
 > ~~~
+> Why are certain values are considered `True` or `False`.
 
 > ## Close enough {.challenge}
 >
@@ -253,5 +330,4 @@ and false statements. However, they aren't the only values in Python that are tr
 > left, right = right, left
 > ~~~
 >
-> Do they always do the same thing?
 > Which do you find easier to read?

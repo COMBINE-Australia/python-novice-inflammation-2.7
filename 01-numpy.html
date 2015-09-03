@@ -48,7 +48,7 @@
 <p>In order to load our inflammation data, we need to <a href="reference.html#import">import</a> a library called NumPy. In general you should use this library if you want to do fancy things with numbers, especially if you have matrices or arrays. We can load NumPy using:</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> numpy</code></pre>
 <p>Importing a library is like getting a piece of lab equipment out of a storage locker and setting it up on the bench. Libraries provide additional functionality to the basic Python package, much like a new piece of equipment adds functionality to a lab space. Once you’ve loaded the library, we can ask the library to read our data file for us:</p>
-<pre class="sourceCode python"><code class="sourceCode python">numpy.loadtxt(fname=<span class="st">&#39;inflammation-01.csv&#39;</span>, delimiter=<span class="st">&#39;,&#39;</span>)</code></pre>
+<pre class="sourceCode python"><code class="sourceCode python">numpy.loadtxt(fname=<span class="st">&#39;data/inflammation-01.csv&#39;</span>, delimiter=<span class="st">&#39;,&#39;</span>)</code></pre>
 <pre class="output"><code>array([[ 0.,  0.,  1., ...,  3.,  0.,  0.],
        [ 0.,  1.,  2., ...,  1.,  0.,  1.],
        [ 0.,  1.,  1., ...,  2.,  1.,  1.],
@@ -91,8 +91,54 @@
 <img src="fig/python-sticky-note-variables-03.svg" alt="Updating a Variable" /><p class="caption">Updating a Variable</p>
 </div>
 <p>Since <code>weight_lb</code> doesn’t “remember” where its value came from, it isn’t automatically updated when <code>weight_kg</code> changes. This is different from the way spreadsheets work.</p>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Easter special: how many eggs?</h2>
+</div>
+<div class="panel-body">
+<pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Number of hidden eggs</span>
+eggs_blue = <span class="dv">6</span>
+eggs_red = <span class="dv">4</span>
+<span class="co"># Total eggs collected</span>
+eggs_total = eggs_blue + eggs_red
+<span class="co"># But one blue egg broke!</span>
+eggs_blue = eggs_blue - <span class="dv">1</span>
+<span class="co"># How many eggs do we have?</span>
+<span class="dt">print</span> eggs_total</code></pre>
+<p>Given the code above, what will be printed at the end?</p>
+<p><strong>A</strong>: 10</p>
+<p><strong>B</strong>: 5</p>
+<p><strong>C</strong>: 4</p>
+<p><strong>D</strong>: 9</p>
+<p>Can you suggest a change in the code?</p>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>What’s inside the box?</h2>
+</div>
+<div class="panel-body">
+<p>Draw diagrams showing what variables refer to what values after each statement in the following program:</p>
+<pre class="sourceCode python"><code class="sourceCode python">weight = <span class="fl">70.5</span>
+age = <span class="dv">35</span>
+<span class="co"># Take a trip to the planet Neptune</span>
+weight = weight * <span class="fl">1.14</span>
+age = age + <span class="dv">20</span></code></pre>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Sorting out references</h2>
+</div>
+<div class="panel-body">
+<p>What does the following program print out?</p>
+<pre class="sourceCode python"><code class="sourceCode python">first, second = <span class="st">&#39;Grace&#39;</span>, <span class="st">&#39;Hopper&#39;</span>
+third, fourth = second, first
+<span class="dt">print</span> third, fourth</code></pre>
+</div>
+</section>
 <p>Just as we can assign a single value to a variable, we can also assign an array of values to a variable using the same syntax. Let’s re-run <code>numpy.loadtxt</code> and save its result:</p>
-<pre class="sourceCode python"><code class="sourceCode python">data = numpy.loadtxt(fname=<span class="st">&#39;inflammation-01.csv&#39;</span>, delimiter=<span class="st">&#39;,&#39;</span>)</code></pre>
+<pre class="sourceCode python"><code class="sourceCode python">data = numpy.loadtxt(fname=<span class="st">&#39;data/inflammation-01.csv&#39;</span>, delimiter=<span class="st">&#39;,&#39;</span>)</code></pre>
 <p>This statement doesn’t produce any output because assignment doesn’t display anything. If we want to check that our data has been loaded, we can print the variable’s value:</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="dt">print</span> data</code></pre>
 <pre class="output"><code>[[ 0.  0.  1. ...,  3.  0.  0.]
@@ -145,6 +191,46 @@
 [[ 2.  3.  0.  0.]
  [ 1.  1.  0.  1.]
  [ 2.  2.  1.  1.]]</code></pre>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Slicing strings</h2>
+</div>
+<div class="panel-body">
+<p>A section of an array is called a <strong>slice</strong>. We can take slices of character strings as well:</p>
+<pre class="sourceCode python"><code class="sourceCode python">element = <span class="st">&#39;hydrogen&#39;</span>
+<span class="dt">print</span> <span class="st">&#39;first two characters:&#39;</span>, element[<span class="dv">0</span>:<span class="dv">2</span>]
+<span class="dt">print</span> <span class="st">&#39;last two characters:&#39;</span>, element[<span class="dv">6</span>:<span class="dv">8</span>]</code></pre>
+<pre class="output"><code>first two characters: hy
+last two characters: en</code></pre>
+<p>Based on the code above, what the values of <code>element[:5]</code> and <code>element[5:]</code> and <code>element[:]</code>?</p>
+<p><strong>A</strong>: <code>hydrog</code> and <code>en</code> and ``</p>
+<p><strong>B</strong>: <code>hydro</code> and <code>gen</code> and <code>hydrogen</code></p>
+<p><strong>C</strong>: <code>hydr</code> and <code>ogen</code> and <code>hydrogen</code></p>
+<p><strong>D</strong>: <code>hydro</code> and <code>gen</code> and ``</p>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Negative indexes</h2>
+</div>
+<div class="panel-body">
+<p>We can also use negative indexes to access characters in strings:</p>
+<pre class="sourceCode python"><code class="sourceCode python">element = <span class="st">&#39;oxygen&#39;</span>
+<span class="dt">print</span> <span class="st">&#39;first three characters:&#39;</span>, element[<span class="dv">0</span>:<span class="dv">3</span>]
+<span class="dt">print</span> <span class="st">&#39;last three characters:&#39;</span>, element[<span class="dv">3</span>:<span class="dv">6</span>]</code></pre>
+<pre class="output"><code>first three characters: oxy
+last three characters: gen</code></pre>
+<p>What is <code>element[-1]</code>? What is <code>element[-2]</code>? Given those answers, explain what <code>element[1:-1]</code> does.</p>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Thin slices</h2>
+</div>
+<div class="panel-body">
+<p>The expression <code>element[3:3]</code> produces an <strong>empty string</strong>, i.e., a string that contains no characters. If <code>data</code> holds our array of patient data, what does <code>data[3:3, 4:4]</code> produce? What about <code>data[3:3, :]</code>?</p>
+</div>
+</section>
 <p>Arrays also know how to perform common mathematical operations on their values. The simplest operations with data are arithmetic: add, subtract, multiply, and divide. When you do such operations on arrays, the operation is done on each individual element of the array. Thus:</p>
 <pre class="sourceCode python"><code class="sourceCode python">doubledata = data * <span class="fl">2.0</span></code></pre>
 <p>will create a new array <code>doubledata</code> whose elements have the value of two times the value of the corresponding elements in <code>data</code>:</p>
@@ -213,10 +299,11 @@ standard deviation: 4.61383319712</code></pre>
   5.975  5.725  6.3    5.9    6.75   5.925  7.225  6.15   5.95   6.275  5.7
   6.1    6.825  5.975  6.725  5.7    6.25   6.4    7.05   5.9  ]</code></pre>
 <p>which is the average inflammation per patient across all days.</p>
-<p>The mathematician Richard Hamming once said, “The purpose of computing is insight, not numbers,” and the best way to develop insight is often to visualize data. Visualization deserves an entire lecture (or course) of its own, but we can explore a few features of Python’s <code>matplotlib</code> library here. While there is no “official” plotting library, this package is the de facto standard. First, we will import the <code>pyplot</code> module from <code>matplotlib</code> and use two of its functions to create and display a heat map of our data:</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> matplotlib.pyplot
-image  = matplotlib.pyplot.imshow(data)
-matplotlib.pyplot.show(image)</code></pre>
+<p>The mathematician Richard Hamming once said, “The purpose of computing is insight, not numbers,” and the best way to develop insight is often to visualize data. Visualization deserves an entire lecture (or course) of its own, but we can explore a few features of Python’s <code>matplotlib</code> library here. While there is no “official” plotting library, this package is the de facto standard. First, we will import the <code>pyplot</code> module from <code>matplotlib</code> and use two of its functions to create and display a heat map of our data. We will also use the ipython notebook magic command <code>%matplotlib inline</code>, in order to embed plots inside the notebook:</p>
+<pre class="sourceCode python"><code class="sourceCode python"><span class="ch">from</span> matplotlib <span class="ch">import</span> pyplot
+%matplotlib inline
+image  = pyplot.imshow(data)
+pyplot.show(image)</code></pre>
 <div class="figure">
 <img src="fig/01-numpy_71_0.png" alt="Heatmap of the Data" /><p class="caption">Heatmap of the Data</p>
 </div>
@@ -283,7 +370,7 @@ matplotlib.pyplot.show(fig)</code></pre>
 <h2><span class="glyphicon glyphicon-pushpin"></span>Scientists dislike typing</h2>
 </div>
 <div class="panel-body">
-<p>We will always use the syntax <code>import numpy</code> to import NumPy. However, in order to save typing, it is <a href="http://www.scipy.org/getting-started.html#an-example-script">often suggested</a> to make a shortcut like so: <code>import numpy as np</code>. If you ever see Python code online using a NumPy function with <code>np</code> (for example, <code>np.loadtxt(...)</code>), it’s because they’ve used this shortcut.</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD We will always use the syntax <code>import numpy</code> to import NumPy. However, in order to save typing, it is <a href="http://www.scipy.org/getting-started.html#an-example-script">often suggested</a> to make a shortcut like so: <code>import numpy as np</code>. If you ever see Python code online using a NumPy function with <code>np</code> (for example, <code>np.loadtxt(...)</code>), it’s because they’ve used this shortcut.</p>
 </div>
 </aside>
 <section class="challenge panel panel-success">
@@ -356,6 +443,10 @@ last three characters: gen</code></pre>
 <p>Create a plot showing the standard deviation (<code>numpy.std</code>) of the inflammation data for each day across all patients.</p>
 </div>
 </section>
+<blockquote>
+<p>Plot scaling: why do some of our plots stop just short of the upper end of our graph?</p>
+<p>Drawing straight lines: why are the vertical lines in our plot of the minimum inflammation per day not perfectly vertical?</p>
+</blockquote>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Moving plots around</h2>

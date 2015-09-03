@@ -36,7 +36,7 @@ Once you've loaded the library,
 we can ask the library to read our data file for us:
 
 ~~~ {.python}
-numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+numpy.loadtxt(fname='data/inflammation-01.csv', delimiter=',')
 ~~~
 ~~~ {.output}
 array([[ 0.,  0.,  1., ...,  3.,  0.,  0.],
@@ -156,11 +156,59 @@ Since `weight_lb` doesn't "remember" where its value came from,
 it isn't automatically updated when `weight_kg` changes.
 This is different from the way spreadsheets work.
 
+> ## Easter special: how many eggs? {.challenge}
+>
+> ~~~ {.python}
+> # Number of hidden eggs
+> eggs_blue = 6
+> eggs_red = 4
+> # Total eggs collected
+> eggs_total = eggs_blue + eggs_red
+> # But one blue egg broke!
+> eggs_blue = eggs_blue - 1
+> # How many eggs do we have?
+> print eggs_total
+> ~~~
+>
+> Given the code above, what will be printed at the end?
+> 
+> **A**: 10
+> 
+> **B**: 5
+> 
+> **C**: 4
+> 
+> **D**: 9
+>
+> Can you suggest a change in the code?
+
+> ## What's inside the box? {.challenge}
+>
+> Draw diagrams showing what variables refer to what values after each statement in the following program:
+>
+> ~~~ {.python}
+> weight = 70.5
+> age = 35
+> # Take a trip to the planet Neptune
+> weight = weight * 1.14
+> age = age + 20
+> ~~~
+
+> ## Sorting out references {.challenge}
+>
+> What does the following program print out?
+>
+> ~~~ {.python}
+> first, second = 'Grace', 'Hopper'
+> third, fourth = second, first
+> print third, fourth
+> ~~~
+
 Just as we can assign a single value to a variable, we can also assign an array of values
 to a variable using the same syntax.  Let's re-run `numpy.loadtxt` and save its result:
 
 ~~~ {.python}
-data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+data = numpy.loadtxt(fname='data/inflammation-01.csv', delimiter=',')
 ~~~
 
 This statement doesn't produce any output because assignment doesn't display anything.
@@ -309,6 +357,60 @@ small is:
  [ 1.  1.  0.  1.]
  [ 2.  2.  1.  1.]]
 ~~~
+
+> ## Slicing strings {.challenge}
+>
+> A section of an array is called a **slice**.
+> We can take slices of character strings as well:
+>
+> ~~~ {.python}
+> element = 'hydrogen'
+> print 'first two characters:', element[0:2]
+> print 'last two characters:', element[6:8]
+> ~~~
+>
+> ~~~ {.output}
+> first two characters: hy
+> last two characters: en
+> ~~~
+>
+> Based on the code above, what the values of `element[:5]` and `element[5:]` and `element[:]`?
+>
+> **A**: `hydrog` and `en` and ``
+>
+> **B**: `hydro` and `gen` and `hydrogen`
+>
+> **C**: `hydr` and `ogen` and `hydrogen`
+>
+> **D**: `hydro` and `gen` and ``
+
+> ## Negative indexes {.challenge}
+>
+> We can also use negative indexes to access characters in strings:
+>
+> ~~~ {.python}
+> element = 'oxygen'
+> print 'first three characters:', element[0:3]
+> print 'last three characters:', element[3:6]
+> ~~~
+>
+> ~~~ {.output}
+> first three characters: oxy
+> last three characters: gen
+> ~~~
+>
+> What is `element[-1]`?
+> What is `element[-2]`?
+> Given those answers,
+> explain what `element[1:-1]` does.
+
+> ## Thin slices {.challenge}
+>
+> The expression `element[3:3]` produces an **empty string**,
+> i.e., a string that contains no characters.
+> If `data` holds our array of patient data,
+> what does `data[3:3, 4:4]` produce?
+> What about `data[3:3, :]`?
 
 Arrays also know how to perform common mathematical operations on their values.
 The simplest operations with data are arithmetic:
@@ -492,12 +594,15 @@ While there is no "official" plotting library,
 this package is the de facto standard.
 First,
 we will import the `pyplot` module from `matplotlib`
-and use two of its functions to create and display a heat map of our data:
+and use two of its functions to create and display a heat map of our data.
+We will also use the ipython notebook magic command `%matplotlib inline`, in order
+to embed plots inside the notebook:
 
 ~~~ {.python}
-import matplotlib.pyplot
-image  = matplotlib.pyplot.imshow(data)
-matplotlib.pyplot.show(image)
+from matplotlib import pyplot
+%matplotlib inline
+image  = pyplot.imshow(data)
+pyplot.show(image)
 ~~~
 
 ![Heatmap of the Data](fig/01-numpy_71_0.png)
@@ -572,6 +677,7 @@ axes3). Once a subplot is created, the axes are can be titled using the
 `set_xlabel()` command (or `set_ylabel()`).
 Here are our three plots side by side:
 
+
 ~~~ {.python}
 import numpy
 import matplotlib.pyplot
@@ -612,6 +718,7 @@ the graphs will actually be squeezed together more closely.)
 
 > ## Scientists dislike typing {.callout}
 >
+<<<<<<< HEAD
 > We will always use the syntax `import numpy` to import NumPy.
 > However, in order to save typing, it is
 > [often suggested](http://www.scipy.org/getting-started.html#an-example-script)
@@ -684,6 +791,10 @@ the graphs will actually be squeezed together more closely.)
 > ## Make your own plot {.challenge}
 >
 > Create a plot showing the standard deviation (`numpy.std`) of the inflammation data for each day across all patients.
+
+> Plot scaling: why do some of our plots stop just short of the upper end of our graph?
+>
+> Drawing straight lines: why are the vertical lines in our plot of the minimum inflammation per day not perfectly vertical?
 
 > ## Moving plots around {.challenge}
 >

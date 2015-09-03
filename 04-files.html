@@ -35,23 +35,62 @@
 <div class="panel-body">
 <ul>
 <li>Use a library function to get a list of filenames that match a simple wildcard pattern.</li>
-<li>Use a for loop to process multiple files.</li>
+<li>Use a <code>for</code> loop to process multiple files.</li>
 </ul>
 </div>
 </section>
 <p>We now have almost everything we need to process all our data files. The only thing that’s missing is a library with a rather unpleasant name:</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> glob</code></pre>
-<p>The <code>glob</code> library contains a single function, also called <code>glob</code>, that finds files whose names match a pattern. We provide those patterns as strings: the character <code>*</code> matches zero or more characters, while <code>?</code> matches any one character. We can use this to get the names of all the html files:</p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="dt">print</span> glob.glob(<span class="st">&#39;*.html&#39;</span>)</code></pre>
-<pre class="output"><code>[&#39;01-numpy.html&#39;, &#39;02-loop.html&#39;, &#39;03-lists.html&#39;, &#39;04-files.html&#39;, &#39;05-cond.html&#39;, &#39;06-func.html&#39;, &#39;07-errors.html&#39;, &#39;08-defensive.html&#39;, &#39;09-debugging.html&#39;, &#39;10-cmdline.html&#39;, &#39;index.html&#39;, &#39;LICENSE.html&#39;, &#39;instructors.html&#39;, &#39;README.html&#39;, &#39;discussion.html&#39;, &#39;reference.html&#39;]</code></pre>
-<p>As these examples show, <code>glob.glob</code>’s result is a list of strings, which means we can loop over it to do something with each filename in turn. In our case, the “something” we want to do is generate a set of plots for each file in our inflammation dataset. Let’s test it by analyzing the first three files in the list:</p>
-<pre class="sourceCode python"><code class="sourceCode python">filenames = glob.glob(<span class="st">&#39;*.csv&#39;</span>)
-filenames = filenames[<span class="dv">0</span>:<span class="dv">3</span>]
+<p>The <code>glob</code> library contains a single function, also called <code>glob</code>, that finds files whose names match a pattern. We provide those patterns as strings: the character <code>*</code> matches zero or more characters, while <code>?</code> matches any one character.</p>
+<p>We can use <code>glob</code> to get the names of all our CSV files:</p>
+<pre class="sourceCode python"><code class="sourceCode python">glob.glob(<span class="st">&#39;data/*.csv&#39;</span>)</code></pre>
+<pre class="output"><code>[&#39;data/inflammation-09.csv&#39;,
+ &#39;data/small-03.csv&#39;,
+ &#39;data/inflammation-11.csv&#39;,
+ &#39;data/inflammation-07.csv&#39;,
+ &#39;data/inflammation-10.csv&#39;,
+ &#39;data/inflammation-01.csv&#39;,
+ &#39;data/inflammation-12.csv&#39;,
+ &#39;data/small-02.csv&#39;,
+ &#39;data/inflammation-03.csv&#39;,
+ &#39;data/inflammation-05.csv&#39;,
+ &#39;data/inflammation-06.csv&#39;,
+ &#39;data/inflammation-04.csv&#39;,
+ &#39;data/inflammation-08.csv&#39;,
+ &#39;data/inflammation-02.csv&#39;,
+ &#39;data/small-01.csv&#39;]</code></pre>
+<p>using <code>?</code>, we can get a subset of inflammation CSV files:</p>
+<pre class="sourceCode python"><code class="sourceCode python">glob.glob(<span class="st">&#39;data/inflammation-0?.csv&#39;</span>)</code></pre>
+<pre class="output"><code>[&#39;data/inflammation-09.csv&#39;,
+ &#39;data/inflammation-07.csv&#39;,
+ &#39;data/inflammation-01.csv&#39;,
+ &#39;data/inflammation-03.csv&#39;,
+ &#39;data/inflammation-05.csv&#39;,
+ &#39;data/inflammation-06.csv&#39;,
+ &#39;data/inflammation-04.csv&#39;,
+ &#39;data/inflammation-08.csv&#39;,
+ &#39;data/inflammation-02.csv&#39;]</code></pre>
+<p>the <code>sorted</code> function can then be used to sort the list in <a href="http://en.wikipedia.org/wiki/Lexicographical_order">lexicographic</a> order:</p>
+<pre class="sourceCode python"><code class="sourceCode python"><span class="dt">sorted</span>(glob.glob(<span class="st">&#39;data/inflammation-*.csv&#39;</span>))</code></pre>
+<pre class="output"><code>[&#39;data/inflammation-01.csv&#39;,
+ &#39;data/inflammation-02.csv&#39;,
+ &#39;data/inflammation-03.csv&#39;,
+ &#39;data/inflammation-04.csv&#39;,
+ &#39;data/inflammation-05.csv&#39;,
+ &#39;data/inflammation-06.csv&#39;,
+ &#39;data/inflammation-07.csv&#39;,
+ &#39;data/inflammation-08.csv&#39;,
+ &#39;data/inflammation-09.csv&#39;,
+ &#39;data/inflammation-10.csv&#39;,
+ &#39;data/inflammation-11.csv&#39;,
+ &#39;data/inflammation-12.csv&#39;]</code></pre>
+<p>We can now generate plots of the inflammation data by looping over a list of their filenames. Let’s do this for the first three inflammation CSV files re-using the code from <a href="01-numpy.html">lesson 1</a>:</p>
+<pre class="sourceCode python"><code class="sourceCode python">filenames = <span class="dt">sorted</span>(glob.glob(<span class="st">&#39;data/inflammation-*.csv&#39;</span>))
+filenames = filenames[:<span class="dv">3</span>]
 <span class="kw">for</span> f in filenames:
     <span class="dt">print</span> f
 
     data = np.loadtxt(fname=f, delimiter=<span class="st">&#39;,&#39;</span>)
-
     fig = plt.figure(figsize=(<span class="fl">10.0</span>, <span class="fl">3.0</span>))
 
     axes1 = fig.add_subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>)
@@ -69,12 +108,25 @@ filenames = filenames[<span class="dv">0</span>:<span class="dv">3</span>]
 
     fig.tight_layout()
     plt.show(fig)</code></pre>
-<pre class="output"><code>inflammation-01.csv</code></pre>
-<p><img src="fig/03-loop_49_1.png" alt="Analysis of inflammation-01.csv" /><br /></p>
-<pre class="output"><code>inflammation-02.csv</code></pre>
-<p><img src="fig/03-loop_49_3.png" alt="Analysis of inflammation-02.csv" /><br /></p>
-<pre class="output"><code>inflammation-03.csv</code></pre>
-<p><img src="fig/03-loop_49_5.png" alt="Analysis of inflammation-03.csv" /><br /> Sure enough, the maxima of the first two data sets show exactly the same ramp as the first, and their minima show the same staircase structure; a different situation has been revealed in the third dataset, where the maxima are a bit less regular, but the minima are consistently zero.</p>
+<p>which produces the following:</p>
+<pre class="output"><code>data/inflammation-01.csv</code></pre>
+<div class="figure">
+<img src="fig/03-loop_49_1.png" alt="Analysis of inflammation-01.csv" /><p class="caption">Analysis of inflammation-01.csv</p>
+</div>
+<pre class="output"><code>data/inflammation-02.csv</code></pre>
+<div class="figure">
+<img src="fig/03-loop_49_3.png" alt="Analysis of inflammation-02.csv" /><p class="caption">Analysis of inflammation-02.csv</p>
+</div>
+<pre class="output"><code>data/inflammation-03.csv</code></pre>
+<div class="figure">
+<img src="fig/03-loop_49_5.png" alt="Analysis of inflammation-03.csv" /><p class="caption">Analysis of inflammation-03.csv</p>
+</div>
+<p>Sure enough, the maxima of the first two data sets show exactly the same ramp as the first, and their minima show the same staircase structure; a different situation has been revealed in the third dataset, where the maxima are a bit less regular, but the minima are consistently zero.</p>
+<h2 id="useful-links">Useful links</h2>
+<ul>
+<li><a href="http://pymotw.com/2/glob/">Python Module of the Week’s article on <code>glob</code></a></li>
+<li><a href="http://matplotlib.org/gallery.html">Matplotlib gallery</a></li>
+</ul>
         </div>
       </div>
       </article>
